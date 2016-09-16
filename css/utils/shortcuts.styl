@@ -1,0 +1,96 @@
+imp = unquote('!important')
+
+fz()
+  font-size: arguments
+rd()
+  border-radius: arguments
+bg()
+  background: arguments
+bgc()
+  background-color: arguments
+
+// brd(c, args...)
+//   if c is a 'rgba' and !args
+//     border: 1px solid c
+//   else
+//     border: arguments
+
+positions = {
+  top: top,
+  bottom: bottom,
+  left: left,
+  right: right,
+  t: top,
+  b: bottom,
+  l: left,
+  r: right
+}
+
+brd(pos, sz=1px, cl=#ccc, st=solid)
+  border-{positions[pos]}: sz st cl
+
+bt(n=1px, c=#ccc)
+  border-top n solid c
+bb(n=1px, c=#ccc)
+  border-bottom n solid c
+bl(n=1px, c=#ccc)
+  border-left n solid c
+br(n=1px, c=#ccc)
+  border-right n solid c
+
+shd(c, args...)
+  if c is a 'rgba' and !args
+    box-shadow: 0 0 0 1px c
+  else
+    box-shadow: arguments
+
+lnh(n=1)
+  line-height: n
+
+
+min-h(n)
+  min-height: n
+min-w(n)
+  min-width: n
+max-h(n)
+  max-height: n
+max-w(n)
+  max-width: n
+
+mrg-t(n)
+  margin-top: n
+mrg-r(n)
+  margin-right: n
+mrg-b(n)
+  margin-bottom: n
+mrg-l(n)
+  margin-left: n
+
+pad-t(n)
+  padding-top: n
+pad-r(n)
+  padding-right: n
+pad-b(n)
+  padding-bottom: n
+pad-l(n)
+  padding-left: n
+
+size(w, h=w)
+  width: w
+  height: h
+
+trans()
+  transition: arguments
+
+anim()
+  animation: arguments
+
+appr(a=none)
+  appearance: a
+
+cols(n=2, g=0, c=transparent)
+  columns: n
+  column-gap: g
+  column-rule: 1px solid c
+
+

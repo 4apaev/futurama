@@ -1,0 +1,32 @@
+@require 'utils'
+
+.tree
+  margin 1em
+
+dl
+  padding .5em
+  margin .5em
+  rd 3px
+  shd #ccc
+  > button.toggle
+    display block
+
+dt, dd
+  @extend $nowrap
+  display inline-block
+  line-height 2
+  padding 0 1em
+  border-top 1px solid #ccc
+  vertical-align top
+dd
+  width 80%
+  border-let 1px solid #ccc
+dt
+  width 20%
+  text-align right
+
+dt:first-of-type, dd:first-of-type
+  border-top none
+
+dd[name=text]
+  white-space normal

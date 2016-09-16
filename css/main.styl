@@ -1,0 +1,95 @@
+@require './utils/reset'
+@require 'utils'
+
+html
+  font-size: 100%
+  -webkit-text-size-adjust: 100%
+  height: 100%
+
+body
+  height: 100%
+  color: _grey3
+  font: 14px/24px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-kerning: normal
+  -webkit-font-smoothing: antialiased
+  display flex
+  flex-direction column
+
+header
+  h1
+    line-height 2
+    padding 0 1em
+
+a
+  color dodgerblue
+
+.page
+  brd t 1px #ccc
+  brd b 1px #ccc
+  display flex
+  flex-direction row
+  flex 16
+
+aside
+  flex 2
+  brd r 1px #ccc
+  overflow-y auto
+  label
+    line-height 2
+    display block
+    padding 0 1em
+  select
+    resize vertical
+    width 100%
+    max-width 100%
+    brd t 1px #ccc
+    brd b 1px #ccc
+    padding .5em
+    option:nth-child(2n+1)
+      bg aliceblue
+
+main
+  flex 4
+  overflow-y auto
+header, footer
+  flex 1
+
+// @require 'layout'
+// @require 'ui'
+// @require 'tree'
+
+// #query
+//   h3
+//     line-height 2
+//     padding 0 1em
+
+//   select
+//     shd #ccc
+//     margin .25em 1em
+//     padding 1em
+//     resize vertical
+//     width calc(100% - 2em)
+
+// #nav
+//   cols 4 0 #ccc
+//   a
+//     brd b 1px #ccc
+//     color dodgerblue
+//     padding 0 1em
+//     display block
+//     line-height 2
+
+
+// #view
+//   rd 3px
+//   shd 1px 1px 15px
+//   top 8em
+//   left 16em
+//   right 4em
+//   position fixed
+//   background #fff
+//   > dl
+//     max-height 48em
+//     overflow-y auto
+
+

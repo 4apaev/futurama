@@ -1,0 +1,68 @@
+@require 'utils'
+
+$headerHeight = 4em
+$footerHeight = 1em
+
+header
+  position: absolute
+  height $headerHeight
+  top 0
+  left 0
+  right 0
+
+footer
+  position: absolute
+  height $footerHeight
+  bottom 0
+  left 0
+  right 0
+
+.page
+  position absolute
+  top $headerHeight
+  bottom $footerHeight
+  right 0
+  left 0
+  shd: 0 1px 0 #ccc, 0 -1px 0 #ccc
+  .ruller
+    top 0
+    bottom 0
+    width 3px
+    position absolute
+    z-index 9999
+    cursor col-resize
+    bg #ccc
+    shd inset 1px 0 #fff,inset -1px 0 #fff
+
+aside, main
+  position absolute
+  top 0
+  bottom 0
+  overflow-y: auto
+
+aside:first-child
+  left 0
+  right 80%
+  bg aliceblue
+aside:last-child
+  left 80%
+  right 0
+  bg honeydew
+main
+  left 20%
+  right 20%
+  bg #fff
+
+
+
+// .ruller
+//   position absolute
+//   top 0
+//   bottom 0
+//   left 80%
+//   width 3px
+//   bg #ccc
+//   shd inset 1px 0 #fff, inset -1px 0 #fff
+//   cursor col-resize
+//   z-index 9999
+

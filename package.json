@@ -1,0 +1,29 @@
+{
+  "name": "futurama",
+  "version": "0.0.1",
+  "description": "dunno",
+  "author": {
+    "name": "Michael Miretski",
+    "email": "4apaev@gmail.com"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "styl"  : "stylus --sourcemap-inline    css/main.styl",
+    "stylw" : "stylus --sourcemap-inline -w css/main.styl",
+    "pug"   : "pug -P -O view -o dist",
+    "pugw"  : "pug -P -O -w view -o dist",
+    "js"    : "browserify -d src/main.js -o dist/main.js",
+    "build" : "npm run styl && npm run pug && npm run js",
+    "watch" : "node tasks/watch.js",
+    "test"  : "mocha tests/*.js",
+    "start" : "node index",
+    "echo"  : "npm run "
+  },
+  "dependencies": {
+    "is": "git@github.com:4apaev/is.git#assert",
+    "declare": "git@github.com:4apaev/declare.git#experiment",
+    "devserver" : "git@github.com:4apaev/devserver.git#instance"
+  }
+}

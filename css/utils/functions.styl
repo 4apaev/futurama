@@ -1,0 +1,103 @@
+@require 'common'
+noop(v)
+  return v
+size(w, h=w)
+  width: w
+  height: h
+
+fn-map(list, cb=noop)
+  map=()
+  push(map, cb(k, v, list)) for k, v in list
+  return map
+
+
+fn-pos(pos, args...)
+  position: pos
+  for dir, i in top right bottom left
+    if args[i] is a 'unit'
+      {dir}: args[i]
+
+fn-pos-center(p=absolute, w=32em)
+  position: p
+  width: w
+  margin-left: -(w/2)
+  left 50%
+
+fn-theme(b, c, h)
+  background-color: b
+  color: c || darken(b, 30%)
+  &:hover
+    background-color: darken(b, 15%)
+    color: h || darken(b, 35%)
+
+fn-sprite(list, w, h, pref)
+  for val, i in list
+    x = (i%w)*w
+    y = floor(i/w)*h
+    .{pref + val}
+      &:before
+        background-position: -1*x  -1*y
+
+fn-ico(prefix, family, hash)
+  [class*={prefix}]
+    &:before
+      @extend $ico
+      font-family: family
+      padding-right:.5em
+
+  for key, val in hash
+    .{prefix + key}
+      &:before
+        content: val
+
+fn-dropbox(h=3em, hh=99em, b=#fff)
+  bgc: b
+  max-h: h
+  top: .5em
+  left: .5em
+  z-index: 9
+  overflow: hidden
+  position: absolute
+  transition: all .3s
+  transition-delay: .75s
+  &:hover
+    max-h: hh
+    z-index: 999
+    overflow-y: auto
+    transition-delay: 0s
+
+
+vendor(prop, args...)
+  -webkit-{prop}: args
+     -moz-{prop}: args
+          {prop}: args
+
+trans()
+  -webkit-transition: arguments
+  -moz-transition: arguments
+  transition: arguments
+
+anim()
+  -webkit-animation: arguments
+  -moz-animation: arguments
+  animation: arguments
+
+appr(a=none)
+  -webkit-appearance: a
+  -moz-appearance: a
+  appearance: a
+
+cols(n=3, g=0, c=transparent)
+  -webkit-columns: n
+  -moz-columns: n
+  columns: n
+  -webkit-gap: g
+  -moz-gap: g
+  gap: g
+  -webkit-rule: 1px solid c
+  -moz-rule: 1px solid c
+  rule: 1px solid c
+
+  //   -webkit-column-break-inside: avoid
+  //             page-break-inside: avoid
+  //                  break-inside: avoid

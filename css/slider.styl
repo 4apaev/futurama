@@ -1,0 +1,29 @@
+@require 'utils'
+
+
+.slider
+  position relative
+  .slide
+    position absolute
+
+  .ruller
+    position absolute
+    z-index  9999
+    cursor   col-resize
+    bg       #ccc
+
+
+
+.slider.vertical
+  .slide, .ruller
+    left 0
+    right 0
+    height 3px
+    shd inset 0 1px #fff,inset 0 -1px #fff
+
+.slider.horizontal
+  .slide, .ruller
+    top 0
+    bottom 0
+    width    3px
+    shd inset 1px 0 #fff,inset -1px 0 #fff

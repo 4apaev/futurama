@@ -1,0 +1,103 @@
+@require 'vars'
+@require 'shortcuts'
+
+
+$clear
+  shd    : none
+  border : none
+  bg     : transparent
+
+$mute
+  user-select: none
+  pointer-events: none
+
+$nowrap
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+$ico
+  font-style: normal
+  font-weight: normal
+  display: inline-block
+  padding: 0 .25em
+  text-decoration: none
+  font-variant: normal
+  text-transform: none
+
+
+$arrow
+  bg #fff
+  shd #ccc
+  color #999
+  overflow hidden
+  text-align left
+  &:before
+    padding: 0 1em 0 0
+  i
+    color #777
+    margin 0 2em 0 -.5em
+    display inline-block
+    padding 0 .5em
+    position relative
+    font-style normal
+    pointer-events none
+    background-color #ccc
+    &:after
+      top  0
+      right  -2em
+      width  0
+      heigth  0
+      content  ''
+      z-index  6
+      position  absolute
+      border-color  transparent transparent transparent #ccc
+      border-style  solid
+      border-width  1em 1em 1em 1em
+      pointer-events  none
+      background-color  transparent
+
+.arrow
+  @extend $arrow
+  &:hover i
+    background-color: _info
+    color: #fff
+    &:after
+      border-color: transparent transparent transparent _info
+
+
+.fx
+  display: flex
+.fx-row
+  display: flex
+  flex-direction: row
+.fx-col
+  display: flex
+  flex-direction: column
+.box
+  flex:1
+
+.right
+  float: right
+.left
+  float: left
+
+.block
+  display:block
+  position: relative
+
+.hidden
+  display:none imp
+
+.scroll-y
+  overflow-y: auto
+
+::-webkit-scrollbar
+  width: .75em
+::-webkit-scrollbar-track
+  shd: inset 1px 0 0 #ccc
+::-webkit-scrollbar-thumb
+  bg:#ccc
+
+
+
