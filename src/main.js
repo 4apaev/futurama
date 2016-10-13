@@ -1,4 +1,4 @@
-require('./dom');
+require('dom');
 
 const is       = require('is');
 const declare  = require('declare');

@@ -8,12 +8,10 @@ module.exports = class View {
       this.el = el
       this.table = table
       this.list = []
-      this.model = new Model(100, 0)
-
-      this.react = this.react.bind(this)
+      this.model = new Model(500, 0)
       this.render = this.render.bind(this)
 
-      this.el.on('change', this.react)
+      this.el.on('change', this.react, this)
     }
 
   render() {
