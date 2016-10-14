@@ -10,7 +10,7 @@ const server  = require('devserver');
 const { body, brws, favicon, logger, statiq, finish } = require('devserver/middleware')
 
 // app middleware
-const { distinct, search, find } = require('./routes/db')(COLLECTION)
+const { distinct, search, find, count } = require('./routes/db')(COLLECTION)
 const home = require('./routes/home')
 
 // create app
@@ -26,6 +26,7 @@ app.get('/favicon.ico',    favicon(ICON, MAXAGE));
 app.get(/src\/.*\.js$/,  brws(BASEDIR, APPNAME));
 app.get(/futurama\/character\/\w+/,  find);
 app.get(/futurama\/distinct\/\w+/,  distinct);
+app.get('/futurama/count',  count);
 app.post('/futurama',  search);
 
 app.get(statiq(BASEDIR));

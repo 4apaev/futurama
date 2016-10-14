@@ -32,5 +32,8 @@ module.exports = cname => {
     return this.db.collection(cname).distinct(prop).then(resolve(res))
   }
 
-  return { distinct, search, find }
+  function count(req, res) {
+    return this.db.collection(cname).count().then(resolve(res))
+  }
+  return { distinct, search, find, count }
 }
