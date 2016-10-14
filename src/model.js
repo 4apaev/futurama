@@ -1,6 +1,5 @@
 const is = require('is');
-const { map } = require('Util/object');
-const { keys, assign, create } = Object;
+const { map, create } = require('Util/object');
 
 module.exports = class Model {
   constructor(limit, skip) {
