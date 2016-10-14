@@ -13,6 +13,6 @@
   "declare"   : "git@github.com:4apaev/declare.git#experiment",
   "promisify" : "git@github.com:4apaev/promisify.git",
   "readdate"  : "git@github.com:4apaev/readdate.git",
-  "vent"      : "git@github.com:4apaev/vent.git#class",
+  "vent"      : "git@github.com:4apaev/vent.git",
   "devserver" : "git@github.com:4apaev/devserver.git#test"
 }
