@@ -24,6 +24,7 @@
   "dependencies": {
     "is": "git@github.com:4apaev/is.git#assert",
     "dom": "git@github.com:4apaev/dom.git",
+    "vent"      : "git@github.com:4apaev/vent.git",
     "declare": "git@github.com:4apaev/declare.git#experiment",
     "devserver" : "git@github.com:4apaev/devserver.git#instance"
   }
