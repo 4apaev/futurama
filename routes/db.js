@@ -5,7 +5,7 @@ const ObjectID = require('mongodb').ObjectID
 const resolve = res => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  return docs => res.end(JSON.stringify(docs))
+  return result => res.end(JSON.stringify({ result }))
 }
 
 module.exports = cname => {
