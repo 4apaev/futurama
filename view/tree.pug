@@ -1,0 +1,15 @@
+mixin tree(x, path, title, name=path.join('.'), type=is(x).toLowerCase())
+  if is.obj(x)
+    dl(class=type, name=name)
+      //- button.toggle(for=name, onclick="this.next.classList.toggle('hidden')")=title
+      button.toggle=title
+      section
+        each v, k in x
+          +tree(v, path.concat(k), k)
+
+  else if is.def(x)
+    dt(class=type, name=name)=title
+    dd(class=type, name=name)=x
+
+.tree
+  +tree(obj, [title], title)

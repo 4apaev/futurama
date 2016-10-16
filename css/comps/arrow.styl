@@ -1,0 +1,38 @@
+$arrow
+  background #fff
+  box-shadow #ccc
+  color #999
+  overflow hidden
+  text-align left
+  &:before
+    padding: 0 1em 0 0
+  i
+    color #777
+    margin 0 2em 0 -.5em
+    display inline-block
+    padding 0 .5em
+    position relative
+    font-style normal
+    pointer-events none
+    background-color #ccc
+    &:after
+      top  0
+      right  -2em
+      width  0
+      heigth  0
+      content  ''
+      z-index  6
+      position  absolute
+      border-color  transparent transparent transparent #ccc
+      border-style  solid
+      border-width  1em 1em 1em 1em
+      pointer-events  none
+      background-color  transparent
+
+.arrow
+  @extend $arrow
+  &:hover i
+    background-color: skyblue
+    color: #fff
+    &:after
+      border-color: transparent transparent transparent skyblue

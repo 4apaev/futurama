@@ -4,20 +4,12 @@ html
     meta(charset='UTF-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport' content='width=device-width')
-    meta(name='appname' content=APPNAME)
     title=APPNAME.toUpperCase()
+    link(rel='icon', href=ICON)
     link(rel='stylesheet', href='css/main.css', type='text/css')
     script.
-      (root => {
-        root.log = console.log.bind(console);
-        document.addEventListener('DOMContentLoaded', e => {
-          let name = document.head.children.appname.content
-          let app = root[name]
-          app.init(root, app)
-          log('init', name)
-        });
-      })(this)
-
+      this.log = console.log.bind(console);
+      document.addEventListener('DOMContentLoaded', e => app.init(window, app));
 
     script(src="src/main.js")
 
@@ -25,13 +17,24 @@ html
     header
       h1=APPNAME
     .page
-      aside#form
+      aside#query
         each term in terms
           label=term.name
           select(name=term.name, multiple)
             each x in term.value
               option(value=x)=x
-      main#list
 
+      main.fx-col
+        #navbar
+          .btn-group
+            button.btn(name="prev") ❮
+            button.btn(name="next") ❯
+
+          label(for="limit")
+            b limit
+            input(name="limit", type="number", max=count, min=0, step=10, value=100)
+
+        #list
     footer
-    #view
+    #character.fx-row.hidden
+

@@ -10,8 +10,8 @@
     "type": "git"
   },
   "scripts": {
-    "styl"  : "stylus --sourcemap-inline    css/main.styl",
-    "stylw" : "stylus --sourcemap-inline -w css/main.styl",
+    "styl"  : "stylus --sourcemap-inline --resolve-url css/main.styl",
+    "stylw" : "stylus --sourcemap-inline --resolve-url -w css/main.styl",
     "pug"   : "pug -P -O view -o dist",
     "pugw"  : "pug -P -O -w view -o dist",
     "js"    : "browserify -d src/main.js -o dist/main.js",

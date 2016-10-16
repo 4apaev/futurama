@@ -1,0 +1,62 @@
+mixin field(name, value, type="text")
+  label(for=name)=name
+  input(name=name, value=value, type=type)
+
+-
+  var name       = "Amy Wong",
+      title      = "Amy Wong",
+      slug       = "amy wong",
+      gender     = "female",
+      species    = "human",
+      status     = "alive",
+      age        = "20",
+      job        = "Intern atPlanet ExpressEngineering Student atMars University (location)&Mars University",
+      planet     = "Currently:EarthFormerly:Mars",
+      relatives  = "Parents:Leo Wong&LeoandInez Wong&InezHusband:KifParents-in-law:'Aunt (name unknown)Mr. and Mrs. Kroker",
+      appearance = "The Series Has Landed",
+      desc       = "Amy Wong, Ph.D. (born May 4, 2978) is a character on the show Futurama",
+      voice      = "Lauren Tom",
+      categories = [ "planet express crew", "globetrotters", "characters", "humans", "main characters", "photo pop characters", "aliens"],
+      quotes     = [
+        { "quote": "Shpluh!", "src": "Amy Wong" },
+        { "quote": "Dad! Why do you think I always wear these dumb boy sweatsuits?", "src": "Amy" },
+        { "quote": "To hide your big fat butt, that's why!", "src": "Leo Wong" },
+        { "quote": "Sporty go-cart, Leela. So hip and sexy", "src": null },
+        { "quote": "Ew, pukeatronic!", "src": null },
+        { "quote": "Hey professor, what's this scrumpf blorking out of the machine?", "src": null },
+        { "quote": "You trashed my board?", "src": null },
+        { "quote": "No spluh, why do you think I'm sitting here in a stink-free zone?", "src": null },
+        { "quote": "Sometimes you meet a guy and think he's a pig, but later on, you find out he actually has a really good body", "src": null },
+        { "quote": "Hey, Ancient Martian's a very hard language. Ah-heungi-Guh looks just like Ahgunte-Cle-deh!", "src": null }
+      ];
+
+
+.col
+  +field('name', name)
+
+  h3 desc
+  textarea(name="desc")=desc
+
+.col
+  +field('gender', gender)
+  +field('species', species)
+  +field('status', status)
+  +field('age', age)
+  +field('planet', planet)
+  +field('job', job)
+
+.col
+  +field('voice', voice)
+  +field('appearance', appearance)
+
+.col
+  h3 quotes
+  ul
+    each q, i in quotes
+      li
+        input(value=q.quote||q, data-index=i, type="text")
+.col
+  h3 categories
+  ul
+    each cat, i in categories
+      li=cat

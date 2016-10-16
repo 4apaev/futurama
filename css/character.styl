@@ -1,0 +1,45 @@
+#character
+  bg #fff
+  position fixed
+  top 4em
+  left 16em
+  right 0
+  bottom 4em
+
+  &:empty
+    display none
+
+  .col
+    flex 1
+    position relative
+    brd r 1px #ccc
+    .btn-group
+      margin .5em
+    input
+      display block
+      width 100%
+    input[name="name"]
+      font-size 1.2em
+
+    nav
+      padding 1em
+      button
+        margin 1px
+        &:hover
+          bg: _err
+      input
+        mrg-b 1em
+
+    h3, label
+      display block
+      brd b 1px #ccc
+      line-height 2
+      padding 0 1em
+
+    textarea
+      width 100%
+      top 5.5em
+      bottom 0
+      position absolute
+      bg aliceblue
+      padding 1em

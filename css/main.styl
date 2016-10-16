@@ -15,6 +15,15 @@ body
   display flex
   flex-direction column
 
+.fx
+  display flex
+.fx-row
+  display flex
+  flex-direction row
+.fx-col
+  display flex
+  flex-direction: column
+
 header
   h1
     line-height 2
@@ -24,6 +33,7 @@ a
   color dodgerblue
 
 .page
+  position relative
   brd t 1px #ccc
   brd b 1px #ccc
   display flex
@@ -31,7 +41,8 @@ a
   flex 16
 
 aside
-  flex 2
+  position relative
+  width 16em
   brd r 1px #ccc
   overflow-y auto
   label
@@ -49,29 +60,41 @@ aside
       bg aliceblue
 
 main
-  flex 4
-  padding 1em
+  flex 1
   overflow-y auto
-  columns 2
-  column-gap 1em
-  column-rule 1px solid #ccc
+  position relative
+
+  #navbar
+    bg #fff
+    brd b 1px #ccc
+    left 0
+    right 0
+    height 4em
+    position absolute
+    > *
+      display inline-block
+      margin 1em
+
+  #list
+    position relative
+    columns 2
+    column-gap 0
+    column-rule 1px solid #ccc
+    overflow-y auto
+    mrg-t 4em
+    a
+      display block
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+      padding 0 1em
+      brd b 1px #ccc
+
 
 header, footer
   flex 1
+  position relative
 
 @require 'ui'
-@require 'tree'
-
-#view
-  rd 3px
-  shd 1px 1px 15px
-  top 8em
-  left 16em
-  right 4em
-  position fixed
-  background #fff
-  > dl
-    max-height 48em
-    overflow-y auto
-
+@require 'character'
 

@@ -1,48 +1,39 @@
-const is       = require('is');
-const Model = require('./model')
-const { keys, assign, create } = Object;
+const Query = require('./query/view');
+const Navbar = require('./navbar/view');
+const List = require('./list/view');
+const Character = require('./character/view');
+const sync = require('./sync');
 
 module.exports = class View {
-
-  constructor(el, table) {
+  constructor(el) {
       this.el = el
-      this.table = table
-      this.list = []
-      this.model = new Model(500, 0)
-      this.render = this.render.bind(this)
+      this.set('query', Query).set('navbar', Navbar);
 
-      this.el.on('change', this.react, this)
+      this.list = new List(this.el.find('#list'))
+      this.character = new Character(this.el.find('#character'))
+
+      this.list.el.on('click a', this.show, this);
+      this.fetch()
     }
 
-  render() {
-    this.table.html = this.list.map(o => `<a href="#character/${ o._id }">${ o.name }</a>`).join('')
-    return this
+   show(e) {
+    let id = e.target.href.split('/').pop();
+    let char = this.list.find(id)
+    this.character.model.set(char)
   }
-
-  react(e) {
-    let name = e.target.name;
-    let opts = [ ...e.target.selectedOptions ].map(x => x.value)
-    let change = this.model.set(name, opts)
-    change && this.fetch()
-  }
-
 
   fetch() {
+      return sync.query({
+        skip:  this.navbar.model.get('skip'),
+        limit: this.navbar.model.get('limit'),
+        query: this.query.model.json
+      })
+        .then(x => this.list.render(this.list.collection = x));
+    }
 
-    return fetch('/futurama', {
-
-      method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.model.json)
-
-    }).then(x => x.json())
-      .then(x => this.list = x)
-      .then(this.render)
-  }
-
+  set(name, Ctor) {
+      this[name] = new Ctor(this.el.find('#' + name))
+      this[name].model.on('change', this.fetch, this)
+      return this
+    }
 }
-
-
-
-
-

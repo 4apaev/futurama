@@ -1,18 +1,21 @@
 {
   "PORT"    : 3000,
-  "MAXAGE"  : 604800000,
-  "BASEDIR" : "./",
   "APPNAME" : "futurama",
-  "COLLECTION" : "characters",
-  "DBHOST"  : "mongodb://localhost:27017/futurama",
-  "ICON"    : "./css/img/Futurama-slurm.gif",
-  "TERMS"    : [ "gender", "species", "status", "planet", "categories" ],
+  "ICON"    : "/css/img/Futurama-slurm.gif",
 
-  "is"        : "git@github.com:4apaev/is.git#assert",
-  "dot"       : "git@github.com:4apaev/dot",
-  "declare"   : "git@github.com:4apaev/declare.git#experiment",
-  "promisify" : "git@github.com:4apaev/promisify.git",
-  "readdate"  : "git@github.com:4apaev/readdate.git",
-  "vent"      : "git@github.com:4apaev/vent.git",
-  "devserver" : "git@github.com:4apaev/devserver.git#test"
+  "DB":{
+    "terms"   : [ "gender", "species", "status", "planet", "categories" ],
+    "collection": "characters",
+    "host"      : "mongodb://localhost:27017/futurama",
+    "count": 626
+  },
+
+  "deps":{
+    "is"        : "git@github.com:4apaev/is.git#assert",
+    "dot"       : "git@github.com:4apaev/dot",
+    "Util"      : "git@github.com:4apaev/util",
+    "vent"      : "git@github.com:4apaev/vent.git",
+    "declare"   : "git@github.com:4apaev/declare.git#experiment",
+    "devserver" : "git@github.com:4apaev/devserver.git#test"
+  }
 }
