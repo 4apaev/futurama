@@ -10,7 +10,7 @@ const { search, find } = require('./routes/db')
 const home = require('./routes/home')
 
 const app = server()
-app.locals = { ICON: conf.ICON, APPNAME: conf.APPNAME, count: conf.DB.count, terms: [] }
+app.locals = { ICON: conf.ICON, APPNAME: conf.APPNAME, terms: [] }
 
 app.use(logger('$statusCode $method $url'));
 app.post(body);
@@ -28,9 +28,6 @@ Mongo.connect(conf.DB.host).then(db => {
   const { terms, collection, host } = conf.DB;
   log('Connected to ', host);
   const distinct = name => db.collection(collection).distinct(name).then(value => ({ name, value }))
-
-  db.collection(collection).count().then(count => app.locals.count = +count)
-
   Promise.all(terms.map(distinct)).then(init)
 })
 
