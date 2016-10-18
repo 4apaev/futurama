@@ -8,6 +8,7 @@ const server  = require('devserver');
 const { body, brws, logger, statiq } = require('devserver/middleware')
 const { search, find } = require('./routes/db')
 const home = require('./routes/home')
+const icons = require('./routes/icons')
 
 const app = server()
 app.locals = { ICON: conf.ICON, APPNAME: conf.APPNAME, terms: [] }
@@ -16,6 +17,7 @@ app.use(logger('$statusCode $method $url'));
 app.post(body);
 
 app.get('/', home);
+app.get('/icons', icons);
 app.get(/src\/.*\.js$/,  brws());
 app.get(/characters\/\w+/, find);
 app.post('/characters',  search);
