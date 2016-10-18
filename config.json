@@ -1,7 +1,7 @@
 {
   "PORT"    : 3000,
   "APPNAME" : "futurama",
-  "ICON"    : "/css/img/Futurama-slurm.gif",
+  "ICON"    : "/css/img/hypnotoad.png",
 
   "DB":{
     "terms"   : [ "gender", "species", "status", "planet", "categories" ],
