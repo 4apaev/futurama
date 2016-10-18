@@ -1,9 +1,16 @@
 const Egg = require('../Egg');
+const navbar = require('../navbar/model');
 
-module.exports = class Que extends Egg {
+class Que extends Egg {
+
   get json() {
-    return this.map((v, k) => {
-      return { '$in': v }
-    })
+    let skip = navbar.get('skip')
+    let limit = navbar.get('limit')
+    let query = this.map((v, k) => ({ '$in': v }))
+    return { skip, limit, query }
   }
 }
+
+const query = new Que
+query.on('change', () => navbar.set('skip', 0, true))
+module.exports = query
