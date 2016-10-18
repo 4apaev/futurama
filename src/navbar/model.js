@@ -1,9 +1,6 @@
 const Egg = require('../Egg');
 
-module.exports = class Nav extends Egg {
-  constructor(skip=0, limit=10, total=626) {
-    super({ skip, limit, total })
-  }
+class Nav extends Egg {
 
   get skip() {
       return this.get('skip')
@@ -14,6 +11,10 @@ module.exports = class Nav extends Egg {
       this.set('skip', n)
   }
 
+  get current() {
+    return this.get('skip') / this.get('limit')
+  }
+
   next() {
       return this.skip += this.get('limit')
     }
@@ -21,3 +22,5 @@ module.exports = class Nav extends Egg {
       return this.skip -= this.get('limit')
     }
 }
+
+module.exports = new Nav({ skip: 0, limit: 20, total: 626 })
