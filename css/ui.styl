@@ -1,22 +1,12 @@
 button, .btn
   rd  3px
-  bg  #ccc
+  bg honeydew
   shd  inset 0 0 0 1px rgba(0,0,0,.1)
   border  none
   padding  0 1em
   line-height 2
   cursor pointer
-
-// button.close
-//   rd  50%
-//   top 0
-//   right 0
-//   position  absolute
-//   padding 0
-//   width 2em
-//   &:after
-//     content: '✖'
-
+  display inline-block
 
 
 .info
@@ -43,7 +33,7 @@ input
     bg lightyellow
 
 .btn-option
-  label
+  .opt-title
     @extend $nowrap
     cursor pointer
     display block
@@ -52,37 +42,31 @@ input
       display inline-block
       padding 0 .5em
       line-height 2
-      content '-'
-  input
+      content '✚'
+
+  .opt-tab
     display none
-    &:checked + label:before
-      content '+'
+
+  input.opt-toggle
+    display none
+
+    &:checked + .opt-title:before
+      content '✖︎'
+    &:checked ~ .opt-tab
+      display block
 
 .btn-group
   rd 3px
-  shd rgba(#000, .2)
+  shd rgba(#000, .3)
   display flex
   > [class*='btn']
     flex: 1
     rd: 0px
-    // bg: transparent
+    shd: inset -1px 0 0 rgba(#000, .3)
 
     &:first-child
-      shd: none
       rd: 3px 0 0 3px
 
     &:last-child
       shd: none
       rd: 0 3px 3px 0
-
-    &:not(:last-child)
-      shd:1px 0 0 rgba(#000, .2)
-
-.popup
-  position fixed
-  top 8em
-  right 4em
-  left 16em
-  background #fff
-  rd 3px
-  shd 1px 1px 15px
