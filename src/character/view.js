@@ -30,7 +30,7 @@ module.exports = class Character {
 
     add(e) {
       let  { name, value, parent } = e.target
-      let i = this.model.get(name).push(value)
+      let i = this.model.get(name).push(...value.split(','))
       parent.append(`<button value="${ name }-${ i-1 }">✖︎ ${ value }</button>`)
       return false
     }
@@ -48,10 +48,8 @@ module.exports = class Character {
     }
 
     close() {
+      location.hash = 'characters'
       this.el.classList.add('hidden')
       return false
     }
-
 }
-
-
