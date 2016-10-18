@@ -7,10 +7,14 @@ const sync = require('./sync');
 module.exports = class View {
   constructor(el) {
       this.el = el
-      this.set('query', Query).set('navbar', Navbar);
 
-      this.list = new List(this.el.find('#list'))
-      this.character = new Character(this.el.find('#character'))
+      this.list = new List(el.find('#list'))
+      this.query = new Query(el.find('#query'))
+      this.navbar = new Navbar(el.find('#navbar'))
+      this.character = new Character(el.find('#character'))
+
+      this.query.model.on('change', this.fetch, this)
+      this.navbar.model.on('change', this.fetch, this)
 
       this.list.el.on('click a', this.show, this);
       this.fetch()
@@ -23,17 +27,11 @@ module.exports = class View {
   }
 
   fetch() {
-      return sync.query({
-        skip:  this.navbar.model.get('skip'),
-        limit: this.navbar.model.get('limit'),
-        query: this.query.model.json
-      })
-        .then(x => this.list.render(this.list.collection = x));
-    }
-
-  set(name, Ctor) {
-      this[name] = new Ctor(this.el.find('#' + name))
-      this[name].model.on('change', this.fetch, this)
-      return this
+      return sync.query(this.query.model.json).then(x => {
+        let silent = true
+        let { result, total } = x
+        this.navbar.model.set('total', total, silent)
+        this.list.render(this.list.collection = result)
+      });
     }
 }
