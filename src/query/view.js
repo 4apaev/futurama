@@ -1,9 +1,9 @@
-const Model = require('./model');
+const model = require('./model');
 
 module.exports = class Query {
   constructor(el) {
       this.el = el
-      this.model = new Model;
+      this.model = model;
       this.el.on('change select', this.react, this)
     }
 
