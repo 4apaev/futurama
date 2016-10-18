@@ -1,23 +1,28 @@
-const is = require('is');
-const Model = require('./model');
+const model = require('./model');
 
 module.exports = class Navbar {
   constructor(el) {
-      this.el = el
-      let { max, min, value } = this.el.find('input')
 
-      this.model = new Model(+min, +value, +max);
+      this.el = el.on('change input[name=limit]', this.limit, this)
+                  .on('click button', this.navigate, this);
 
-      this.el.on('change input', this.limit, this)
-      this.el.on('click button', this.navigate, this)
+      this.model = model.on('change', this.render, this)
+                        .on('change:silent', this.render, this);
+    }
+
+  render() {
+      this.el.find('label.btn').text = this.model.current
+      this.el.find('input[name=limit]').value= this.model.get('limit')
     }
 
   navigate(e) {
-      return is.result(this.model, e.target.name)
+      this.model[e.target.name]()
+      return false
     }
 
   limit(e) {
-      return this.model.set('limit', +e.target.value)
+      this.model.set('limit', +e.target.value)
+      return false
     }
 }
 
