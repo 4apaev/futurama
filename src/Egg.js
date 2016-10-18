@@ -23,11 +23,12 @@ class Egg extends Vent {
     return changed
   }
 
-  set(k, v) {
+  set(k, v, silent) {
     let changed = is.obj(k) ? reduce(k, this.setup, [], this) : this.setup([], v, k);
     if (changed.length) {
-      changed.forEach(k => this.emit('change:'+k, this))
-      return this.emit('change', this)
+      let evt = silent ? 'change:silent' : 'change'
+      changed.forEach(k => this.emit(`${ evt }:${ k }`, this))
+      return this.emit(evt, this)
     }
     return this;
   }
