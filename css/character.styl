@@ -1,25 +1,38 @@
 #character
   bg #fff
-  position fixed
-  top 4em
   left 16em
   right 0
-  bottom 4em
-
-  &:empty
-    display none
+  top 4.4em
+  bottom 4.4em
+  position fixed
 
   .col
     flex 1
     position relative
     brd r 1px #ccc
-    .btn-group
-      margin .5em
-    input
-      display block
-      width 100%
-    input[name="name"]
-      font-size 1.2em
+    padding 1em
+    overflow-y auto
+
+    .head
+      margin 1em 0
+      img
+        pad-r 1em
+        brd r 1px #ccc
+      h2
+        pad-l 1em
+        line-height 4
+
+    .field
+      mrg-b 4px
+      display flex
+      line-height 2
+
+      b
+        shd #ccc
+        width 15%
+        padding 0 1em
+      input
+        width 85%
 
     nav
       padding 1em
@@ -29,17 +42,7 @@
           bg: _err
       input
         mrg-b 1em
+        width 100%
 
-    h3, label
-      display block
-      brd b 1px #ccc
-      line-height 2
-      padding 0 1em
-
-    textarea
-      width 100%
-      top 5.5em
-      bottom 0
-      position absolute
-      bg aliceblue
-      padding 1em
+  pre.col
+    white-space pre-wrap
