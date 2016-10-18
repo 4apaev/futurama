@@ -8,7 +8,8 @@ exports.search = search;
 
 function search(req, res) {
   let { query, limit=100, skip=0 } = req.body;
-  return this.db.collection(CNAME).find(query).skip(skip).limit(limit).toArray().then(resolve(res));
+  let cursor = this.db.collection(CNAME).find(query).skip(skip).limit(limit);
+  return cursor.count().then(total => cursor.toArray().then(resolve(res, total)));
 }
 
 function find(req, res) {
@@ -16,8 +17,8 @@ function find(req, res) {
   return this.db.collection(CNAME).findOne(id).then(resolve(res))
 }
 
-function resolve(res) {
+function resolve(res, total=1) {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  return result => res.end(JSON.stringify({ result }))
+  return result => res.end(JSON.stringify({ result, total }))
 }
