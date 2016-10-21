@@ -7,6 +7,14 @@ exports.query = body => fetch('/characters', {
   })
   .then(json);
 
+
+exports.update = (id, body) => fetch('/characters/' + id, {
+    body: JSON.stringify(body, 0, 2),
+    method:'PUT',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+  })
+  .then(json);
+
 exports.find = id => fetch('/characters/' + id).then(json);
 
 

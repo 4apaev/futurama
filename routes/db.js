@@ -5,6 +5,7 @@ const CNAME = require(`${ process.cwd() }/config.json`).DB.collection
 
 exports.find = find;
 exports.search = search;
+exports.update = update;
 
 function search(req, res) {
   let { query, limit=100, skip=0 } = req.body;
@@ -15,6 +16,12 @@ function search(req, res) {
 function find(req, res) {
   let id = ObjectID(req.url.split('/').pop())
   return this.db.collection(CNAME).findOne(id).then(resolve(res))
+}
+
+function update(req, res) {
+  let _id = ObjectID(req.url.split('/').pop())
+  let { attrs } = req.body;
+  return this.db.collection(CNAME).updateOne({ _id }, attrs, { returnOriginal: false }).then(resolve(res))
 }
 
 function resolve(res, total=1) {
