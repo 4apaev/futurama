@@ -1,0 +1,1 @@
+module.exports = (id, value) => `<symbol id="${ id }" viewBox="0 0 24 24"><path d="${ value }"></path></symbol>`;
