@@ -1,31 +1,78 @@
-svg#svg-define
-  position fixed
-  width 0
-  height 0
-  overflow hidden
-  display none
+fdir = './fonts/'
+@font-face
+  font-family 'ico'
+  src url(fdir + 'ico.ttf') format('truetype'),
+      url(fdir + 'ico.woff') format('woff'),
+      url(fdir + 'ico.svg') format('svg')
 
-.ico, [class^="ico-"], [class*=" ico-"]
-  display inline-block
-  width 1em
-  height 1em
-  stroke-width 0
-  // font-size 1em
-  stroke currentColor
-  fill currentColor
+  font-weight normal
+  font-style normal
+
+fn-ico('i', 'ico', {
+  fire      :  '\f134'
+  rocket    :  '\f135'
+  female    :  '\f221'
+  male      :  '\f222'
+
+  trash     :  '\e872'
+  flag      :  '\e153'
+  plug      :  '\e87b'
+  layers    :  '\e53b'
+  tip       :  '\e0ca'
+  label     :  '\e892'
+  tag       :  '\e54e'
+  build     :  '\e869'
+  edit      :  '\e254'
+  security  :  '\e32a'
+  save      :  '\e1c2'
+  power     :  '\e63c'
+  attach    :  '\e226'
+  cake      :  '\e7e9'
+  location  :  '\e55c'
+  explore   :  '\e87a'
+  geo       :  '\e8b4'
+  seat      :  '\e903'
+  settings  :  '\e8b8'
+  mailbox   :  '\e89b'
+  random    :  '\eb40'
+  stop      :  '\e925'
+  warning   :  '\e160'
+  dir       :  '\e52e'
+
+  case      :  '\eb3f'
+  job       :  '\eb3f'
+  mic       :  '\e029'
+  voice     :  '\e029'
+  mark      :  '\e8e6'
+  categories:  '\e8e6'
+  public    :  '\e80b'
+  planet    :  '\e80b'
+  traffic   :  '\e565'
+  status    :  '\e565'
+  pet       :  '\e91d'
+  species   :  '\e91d'
+  sex       :  '\f224'
+  gender    :  '\f224'
+
+  key       :  '\e0da'
+  eye       :  '\e8f4'
+  del       :  '\e14a'
+  sort      :  '\e164'
+  list-add  :  '\e03b'
+  minus     :  '\e15b'
+  plus      :  '\e145'
+  ok        :  '\e5ca'
+  close     :  '\e5cd'
+  block     :  '\e033'
+  refresh   :  '\e86a'
+  off       :  '\e8ac'
+  prev      :  '\e408'
+  next      :  '\e315'
+  user-geo  :  '\e407'
+  user      :  '\e851'
+  video-lib :  '\e04a'
+  photo-lib :  '\e413'
+  lib       :  '\e02f'
 
 
-#svg-icons
-  .ico
-    font-size 2em
-
-  ul
-    columns 4
-    column-gap 0
-    column-rule 1px solid #ccc
-    li
-      line-height 2
-      padding 0 1em
-      span
-        display inline-block
-        pad-l 1em
+})
