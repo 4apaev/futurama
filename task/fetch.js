@@ -1,8 +1,5 @@
 'use strict';
 
-global.log = console.log.bind(console)
-
-
 const fs = require('fs')
 const http = require('http')
 

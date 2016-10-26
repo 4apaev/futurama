@@ -2,24 +2,24 @@
 global.log = console.log.bind(console)
 
 const cwd = process.cwd()
-
+const is = require('is')
 const fs = require('fs')
 const http = require('http')
 const fetch = require(cwd + '/task/fetch')
+const Mongo = require('mongodb').MongoClient;
 
 
-const slug = (ttl, url) => `${ cwd }/img/${ ttl.match(/\w+/g).join('_') }.${ url.split('.').pop() }`
+const fin = err => log(err||'DONE')
+const getImg = (slug, url) => `${ cwd }/images/${ slug }.${ url.match(/\.(gif|jpe?g|png)/i)[1].toLowerCase() }`
 
-function queue(tasks, done, i=0, n=tasks.length) {
 
+function queue(docs, done, i=0, n=docs.length) {
     function next(err) {
-
       if (err||i>=n)
         return done(err);
 
-      let { title, image } = tasks[i++];
-      let name = slug(title, image)
-
+      let { slug, image } = docs[i++];
+      let name = getImg(slug, image);
       fetch(image, name, next)
     }
     next()
@@ -27,7 +27,15 @@ function queue(tasks, done, i=0, n=tasks.length) {
 
 
 
-queue(require(cwd + '/img/db.json'), err => {
-  log(err||'DONE')
-})
+Mongo.connect('mongodb://localhost:27017/futurama')
+     .then(db => {
+        db.collection('characters')
+          .find({ image: { $regex: /^http/i }})
+          .toArray()
+          .then(docs => {
+              queue(docs, fin);
+              db.close();
+          })
+            .catch(fin);
+    })
 
