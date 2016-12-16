@@ -1,5 +1,6 @@
 @require './utils/reset'
 @require 'utils'
+@require 'icons'
 
 html
   font-size: 100%
@@ -8,21 +9,13 @@ html
 
 body
   height: 100%
-  color: _grey3
+  color: #555
   font: 14px/24px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
   font-kerning: normal
   -webkit-font-smoothing: antialiased
   display flex
   flex-direction column
 
-.fx
-  display flex
-.fx-row
-  display flex
-  flex-direction row
-.fx-col
-  display flex
-  flex-direction: column
 
 header
   h1
@@ -44,11 +37,15 @@ aside
   position relative
   width 16em
   brd r 1px #ccc
-  overflow-y auto
-  label
+  // overflow-y auto
+  bg azure
+  button.i-restore
     line-height 2
     display block
-    padding 0 1em
+    padding 0 .5em 0 0
+    shd none
+    width 100%
+    text-align left
   select
     resize vertical
     width 100%
@@ -65,7 +62,7 @@ main
   position relative
 
   #navbar
-    bg #fff
+    bg azure
     brd b 1px #ccc
     left 0
     right 0
@@ -73,7 +70,12 @@ main
     position absolute
     > *
       display inline-block
-      margin 1em
+      margin 1em 0 0 1em
+    input
+      width 3em
+      shd none
+      bg transparent
+      padding 0
 
   #list
     position relative
@@ -94,6 +96,7 @@ main
 header, footer
   flex 1
   position relative
+
 
 @require 'ui'
 @require 'character'

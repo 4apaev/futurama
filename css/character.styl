@@ -5,6 +5,8 @@
   top 4.4em
   bottom 4.4em
   position fixed
+  &:empty
+    display none
 
   .col
     flex 1
@@ -12,15 +14,19 @@
     brd r 1px #ccc
     padding 1em
     overflow-y auto
+    .actions
+      position: absolute
+      right 1em
 
     .head
-      margin 1em 0
+      mrg-b 1em
       img
         pad-r 1em
         brd r 1px #ccc
+        max-h 12em
       h2
         pad-l 1em
-        line-height 4
+        line-height 6
 
     .field
       mrg-b 4px
@@ -28,21 +34,29 @@
       line-height 2
 
       b
-        shd #ccc
-        width 15%
-        padding 0 1em
+        shd inset 1px 0 0 1px #ccc
+        width 20%
+        pad-r 1em
+        rd 3px 0 0 3px
       input
-        width 85%
+        rd 0 3px 3px 0
+        width 80%
 
     nav
       padding 1em
       button
         margin 1px
+        padding 0 .5em 0 0
         &:hover
           bg: _err
       input
         mrg-b 1em
         width 100%
 
-  pre.col
-    white-space pre-wrap
+    textarea
+      padding 1em
+      flex 1
+      white-space pre-wrap
+      rd 3px
+      shd inset 0 0 5px #ccc
+      color #555

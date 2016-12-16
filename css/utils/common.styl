@@ -22,46 +22,6 @@ $ico
   text-transform: none
 
 
-$arrow
-  bg #fff
-  shd #ccc
-  color #999
-  overflow hidden
-  text-align left
-  &:before
-    padding: 0 1em 0 0
-  i
-    color #777
-    margin 0 2em 0 -.5em
-    display inline-block
-    padding 0 .5em
-    position relative
-    font-style normal
-    pointer-events none
-    background-color #ccc
-    &:after
-      top  0
-      right  -2em
-      width  0
-      heigth  0
-      content  ''
-      z-index  6
-      position  absolute
-      border-color  transparent transparent transparent #ccc
-      border-style  solid
-      border-width  1em 1em 1em 1em
-      pointer-events  none
-      background-color  transparent
-
-.arrow
-  @extend $arrow
-  &:hover i
-    background-color: _info
-    color: #fff
-    &:after
-      border-color: transparent transparent transparent _info
-
-
 .fx
   display: flex
 .fx-row
@@ -89,11 +49,12 @@ $arrow
   overflow-y: auto
 
 ::-webkit-scrollbar
-  width: .75em
+  width .5em
 ::-webkit-scrollbar-track
-  shd: inset 1px 0 0 #ccc
+  shd inset 1px 0 2px #ccc
 ::-webkit-scrollbar-thumb
-  bg:#ccc
+  bg #ccc
+  shd inset 0 0 5px #aaa
 
 
 
