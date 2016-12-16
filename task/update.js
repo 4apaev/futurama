@@ -7,9 +7,16 @@ const Mongo = require('mongodb').MongoClient;
 
 const trim = x => x.trim()
 
+
 const updateImg = (col) => {
-  col.find({ image: { $exists: false }}).forEach(doc => {
-    col.updateOne({ _id: doc._id }, { $set: { image: '' } })
+  col.find().forEach(doc => {
+    let { _id, image, slug } = doc
+
+    let img = '/img/futurama.png'===image||'/img/head_in_jar.png'===image
+      ? image.slice(5)
+      : `${ slug }.png`;
+
+    col.updateOne({ _id }, { $set: { image: img } })
   })
 }
 
@@ -41,7 +48,7 @@ const updateSlug = col => {
 
 Mongo.connect('mongodb://localhost:27017/futurama')
     .then(db => {
-        updateSlug(db.collection('characters'))
+        updateImg(db.collection('characters'))
         setTimeout(() => db.close(), 2000)
     })
 
