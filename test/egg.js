@@ -52,3 +52,19 @@ describe('Egg:change', function() {
   })
 
 })
+
+
+describe('Egg:diff', function() {
+
+
+  it('new Egg instance should have not diff', () => {
+
+    let egg = new Egg({ a: 1, b: 2 });
+
+    assert.equal(1, egg.get('a'))
+    assert.equal(2, egg.get('b'))
+    assert.equal(0, egg.diff.length)
+
+  })
+
+})

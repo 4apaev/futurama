@@ -1,13 +1,17 @@
 {
   "PORT"    : 3000,
-  "APPNAME" : "futurama",
-  "ICON"    : "/css/img/hypnotoad.png",
 
-  "DB":{
-    "terms"   : [ "gender", "species", "status", "planet", "categories" ],
-    "collection": "characters",
-    "host"      : "mongodb://localhost:27017/futurama",
-    "count": 626
+  "LOCALS" : {
+    "APPNAME" : "futurama",
+    "ICON"    : "/css/img/hypnotoad.png",
+    "TERMS"   : [],
+    "LIMIT"   : 50
+  },
+
+  "MONGO" : {
+    "HOST"    : "mongodb://localhost:27017/futurama",
+    "LABEL"   : "characters",
+    "TERMS" : [ "gender", "species", "status", "planet", "categories" ]
   },
 
   "deps":{

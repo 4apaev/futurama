@@ -19,7 +19,8 @@
     "watch" : "node tasks/watch.js",
     "test"  : "mocha tests/*.js",
     "start" : "node index",
-    "echo"  : "npm run "
+    "es5"  : "uglifyjs dist/main.es5.js --screw-ie8 -c -m -o dist/main.es5.min.js",
+    "min"  : "babel --presets es2015 dist/main.js -o dist/main.es5.js"
   },
   "dependencies": {
     "is": "git@github.com:4apaev/is.git#assert",
