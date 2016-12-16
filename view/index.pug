@@ -10,31 +10,32 @@ html
     script.
       this.log = console.log.bind(console);
       document.addEventListener('DOMContentLoaded', e => app.init(window, app));
-
-    script(src="src/main.js")
-
   body
-    header
-      h1=APPNAME
+    header: h1=APPNAME
     .page
       aside#query
-        each term in terms
-          label=term.name
-          select(name=term.name, multiple)
-            each x in term.value
-              option(value=x)=x
-
+        each term in TERMS
+          .dropbox
+            h3(class="i-"+term.name)=term.name
+            nav
+              each x in term.value.sort()
+                .btn-option
+                  -let id = "o-"+x
+                  input.opt-toggle(type="checkbox", id=id, name=term.name, value=x)
+                  label.opt-title(for=id)=x
       main.fx-col
         #navbar
           .btn-group
-            button.btn(name="prev") ❮
-            button.btn(name="next") ❯
+            button.btn.i-prev(name="prev")
+            label.btn.current 0
+            button.btn.i-next(name="next")
 
-          label(for="limit")
-            b limit
-            input(name="limit", type="number", max=count, min=0, step=10, value=100)
+          label(for="limit") limit
+          input(name="limit", type="number", min=0, step=10, value=LIMIT)
+
 
         #list
     footer
-    #character.fx-row.hidden
+    #character.fx-row
+    script(src="src/main.js")
 
