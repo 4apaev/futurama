@@ -1,7 +1,7 @@
 'use strict';
 const is = require('is')
 const Vent = require('vent');
-const { assign, create, reduce, map, pick, omit } = require('Util/object')
+const { keys, assign, create, reduce, map, pick, omit, forIn, filter } = require('Util/object')
 
 class Egg extends Vent {
   constructor(attrs) {
@@ -28,35 +28,31 @@ class Egg extends Vent {
     if (changed.length) {
       let evt = silent ? 'change:silent' : 'change'
       changed.forEach(k => this.emit(`${ evt }:${ k }`, this))
-      return this.emit(evt, this)
+      return this.emit(evt, this, ...changed)
     }
     return this;
   }
 
-  has(k) { return is.def(k) && k in this.attrs; }
+  has(k) { return k in this.attrs; }
   get(k) { return this.attrs[k]; }
 
-   map(...args) { return  map(this.attrs, ...args) }
-  pick(...args) { return pick(this.attrs, ...args) }
-  omit(...args) { return omit(this.attrs, ...args) }
+     map(...args) { return  map(this.attrs, ...args) }
+    pick(...args) { return pick(this.attrs, ...args) }
+    omit(...args) { return omit(this.attrs, ...args) }
+           keys() { return keys(this.attrs) }
+    each(...args) { return forIn(this.attrs, ...args) }
+  reduce(...args) { return reduce(this.attrs, ...args) }
+  filter(...args) { return filter(this.attrs, ...args) }
 
-  get json() { return assign({}, this.attrs); }
+  get id() {
+    return this.get('_id')
+  }
+  set id(id) {
+    return this.set('_id', id)
+  }
+  get json() {
+    return assign({}, this.attrs)
+  }
 }
 
 module.exports = Egg
-
-
-  // parse(x) { return this.set(x) }
-
-  // fetch(url=this.url) {
-  //   return sync.get(url)
-  //               .accept('json')
-  //               .end(x => this.parse(x))
-  // }
-
-  // post(url=this.url) {
-  //   return sync.post(url)
-  //               .accept('json')
-  //               .send(this.json)
-  //               .end()
-  // }
